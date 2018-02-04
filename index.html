@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-<title>New Event - Responsive HTML Template</title>
+<title>Эволюционный Рейтинг субъектов РФ</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
@@ -59,10 +59,39 @@ selectRegion = '#0A4C82'; // Цвет изначально подсвеченн�
 
 highlighted_states = {};
 
+// var data_obj = {}
+// function processData(allText) {
+//     var allTextLines = allText.split(/\r\n|\n/);
+//     var headers = allTextLines[0].split(',');
+
+//     for (var i=1; i<allTextLines.length; i++) {
+//         var data = allTextLines[i].split(',');
+//         if (data.length == 3) {
+
+//             var id = data[0];
+//             var v = parseFloat(data[1]);
+//             var a = parseFloat(data[2]);
+//             predicts[id] = [v, a];
+//         }
+//     }
+// }
+
+// $(document).ready(function() {
+//     $.ajax({
+//         type: "GET",
+//         url: "/rating/rating.csv",
+//         dataType: "text",
+//         success: function(data) {processData(data);}
+//      });
+// });
+
+// getCsv("/rating/rating.csv")
+
 // Массив подсвечиваемых регионов, указанных в массиве data_obj
 for(iso in data_obj){
 	highlighted_states[iso] = selectRegion;
 }
+
 
 $(document).ready(function() {
 	$('#vmap').vectorMap({
@@ -195,7 +224,8 @@ $(function(){
 
 			<div class="col-md-12 col-sm-12">
 				<!-- <h3 class="wow bounceIn" data-wow-delay="0.9s">July 22 - 26 in San Francisco, CA</h3> -->
-				<h1 class="wow fadeInUp" data-wow-delay="0.5s">Эволюционный рейтинг субъектов РФ</h1>
+				<h1 class="wow fadeInUp" data-wow-delay="0.5s">РЕЙТИНГ <br> СОЦИАЛЬНО-ЭКОЛОГО-ЭКОНОМИЧЕСКОГО РАЗВИТИЯ СУБЪЕКТОВ РОССИЙСКОЙ ФЕДЕРАЦИИ </h1>
+				<h2 class="wow fadeInUp" data-wow-delay="0.5s">(ЭВОЛЮЦИОННЫЙ РЕЙТИНГ)</h1>
 				<a href="#overview" class="btn btn-lg btn-default wow fadeInUp hidden-xs" data-wow-delay="1.0s">Интерактивная карта</a>
 				<a href="#concept" class="btn btn-lg btn-default wow fadeInUp" data-wow-delay="1.0s">Описание</a>
 			</div>
@@ -213,7 +243,7 @@ $(function(){
 	<div class="container">
 		<div class="row">
 			<div class="wow fadeInUp col-md-10 col-sm-10" data-wow-delay="0.5s">
-				<h2>Интерактивная карта</h2>
+				<h2>Интерактивная карта субъектов РФ</h2>
 			</div>
 			<!-- <div class="wow fadeInUp col-md-6 col-sm-6" data-wow-delay="0.6s">
 				<h3>New Event is a fully responsive one-page template for events, conferences or workshops.</h3>
@@ -318,6 +348,16 @@ $(function(){
 			</div>
 
 			<div id="owl-speakers" class="owl-carousel">
+
+				<div class="item wow fadeInUp col-md-3 col-sm-3 co-author"  data-wow-delay="0.5s">
+					<div class="speakers-wrapper">
+						<img src="images/orlova.jpg" class="img-responsive" alt="speakers">
+							<div class="speakers-thumb">
+								<h3>Орлова Елена Роальдовна</h3>
+								<h6>Доктор экономический наук, зав.лабораторией «Информационные технологии оценки эффективности инвестиций» 	ИСА РАН (ФИЦ «Информатика и управление»)</h6>
+							</div>
+					</div>
+				</div>
 
 				<div class="item wow fadeInUp col-md-3 col-sm-3 co-author"  data-wow-delay="0.5s">
 					<div class="speakers-wrapper">
@@ -428,24 +468,27 @@ $(function(){
 			<div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.5s">
 				<div class="section-title">
 					<h2>Публикации</h2>
-					<p>Вашему вниманию представлены основные публикации авторов на русском и английском языках, представляющих характеристику и результаты применения рейтинга РАНХиГС:</p>
+					<p>Вашему вниманию представлены основные публикации авторов на русском и английском языках, представляющих характеристику и результаты применения эволюционного рейтинга:</p>
 				</div>
 			</div>
 
 			<div class="wow fadeInUp col-md-10 col-sm-10" data-wow-delay="0.5s">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="active"><a href="#fpage" aria-controls="fpage" role="tab" data-toggle="tab">Первая страница</a></li>
+					<li><a href="#spage" aria-controls="spage" role="tab" data-toggle="tab">Вторая страница</a></li>
+				</ul>
+
 				<div class="tab-content">
 
-					<div role="tabpanel" class="tab-pane active" id="fday">
-						<!-- program speaker here -->
+					<div role="tabpanel" class="tab-pane active" id="fpage">
 						<div class="col-md-2 col-sm-2">
 							<img src="images/publication_1.png" class="img-responsive" alt="program">
 						</div>
 						<div class="col-md-10 col-sm-10">
-							<!-- <h6>
-								<span><i class="fa fa-clock-o"></i> 09.00 AM</span> 
-								<span><i class="fa fa-map-marker"></i> Room 240</span>
-							</h6> -->
-							<h3>1. Ранговый анализ региональных социально-экономических систем: усовершенствованный подход // Экономический анализ: теория и практика. – 2016. - №10. – С.17-27.</h3>
+							<h3>1. Ранговый анализ региональных социально-экономических систем: усовершенствованный подход // Экономический анализ: теория и практика. – 2016. - №10. – С.17-27. </h3>
+							<a href="publications/1.pdf" target="_blank">Скачать</a>
 						</div>
 
 						<!-- program divider -->
@@ -453,11 +496,12 @@ $(function(){
 
 						<!-- program speaker here -->
 						<div class="col-md-2 col-sm-2">
-							<img src="images/publication_2.png" class="img-responsive" alt="program">
+							<img src="images/publication_2.jpg" class="img-responsive" alt="program">
 						</div>
 						<div class="col-md-10 col-sm-10">
-							<h3>2. Состояние и развитие инновационной деятельности в экономике Волгоградской области: взлеты и падения // Право интеллектуальной собственности, 2016 - №4. – С.29-32.</h3>
-							
+							<h3>2. Application of method of effective ranking in the construction of the ratings (for example, GDP percapita) // Journal of Engineering and Applied Sciences». 2017. Vol.12, No19
+							</h3>
+							<a href="publications/2.pdf" target="_blank">Скачать</a>
 						</div>
 
 						<!-- program divider -->
@@ -465,34 +509,35 @@ $(function(){
 
 						<!-- program speaker here -->
 						<div class="col-md-2 col-sm-2">
-							<img src="images/publication_3.jpg" class="img-responsive" alt="program">
+							<img src="images/publication_3.png" class="img-responsive" alt="program">
 						</div>
 						<div class="col-md-10 col-sm-10">
-							<h3>3. Структурный и ранговый анализ региональных социально-экономических систем: препринт. - Волгоград: Изд-во Волгоградского филиала ФГБОУ ВО РАНХиГС, 2016. - 60 с.</h3>
+							<h3>3. Состояние и развитие инновационной деятельности в экономике Волгоградской области: взлеты и падения // Право интеллектуальной собственности, 2016 - №4. – С.29-32.</h3>
+							<a href="publications/3.pdf" target="_blank">Скачать</a>
 						</div>
 
 
 						<!-- program divider -->
 						<div class="program-divider col-md-12 col-sm-12"></div>
 
-						<!-- program speaker here -->
+						
 						<div class="col-md-2 col-sm-2">
-							<!-- <img src="images/publication_3.jpg" class="img-responsive" alt="program"> -->
+							<img src="images/publication_4.png" class="img-responsive" alt="program">
 						</div>
 						<div class="col-md-10 col-sm-10">
-							<h3>4. Особенности структурного и рангового анализа результатов устойчивого развития субъектов РФ // Социум и власть, 2017. – № 4(60). – С.</h3>
+							<h3>4. Оценка результатов инновационного развития российских регионов (на примере субъектов Российской Федерации, входящих в Южный Федеральный Округ) // Право интеллектуальной собственности, 2018 - №1 (в печати).</h3>
+							<a href="publications/4.pdf" target="_blank">Скачать</a>
 						</div>
+					</div>
 
-
-						<!-- program divider -->
-						<div class="program-divider col-md-12 col-sm-12"></div>
-
-						<!-- program speaker here -->
+					<div role="tabpanel" class="tab-pane" id="spage">
+						
 						<div class="col-md-2 col-sm-2">
 							<img src="images/publication_5.jpg" class="img-responsive" alt="program">
 						</div>
 						<div class="col-md-10 col-sm-10">
-							<h3>5. Application of method of effective ranking in the construction of the ratings (for example, GDP percapita) // Journal of Engineering and Applied Sciences». 2017. Vol.12, No19</h3>
+							<h3>5. Структурный и ранговый анализ региональных социально-экономических систем: препринт. - Волгоград: Изд-во Волгоградского филиала ФГБОУ ВО РАНХиГС, 2016. - 60 с.</h3>
+							<a href="publications/5.pdf" target="_blank">Скачать</a>
 						</div>
 
 						<!-- program divider -->
@@ -500,10 +545,35 @@ $(function(){
 
 						<!-- program speaker here -->
 						<div class="col-md-2 col-sm-2">
-							<img src="images/publication_6.png" class="img-responsive" alt="program">
+							<img src="images/publication_6.jpg" class="img-responsive" alt="program">
 						</div>
 						<div class="col-md-10 col-sm-10">
-							<h3>6. Оценка результатов инновационного развития российских регионов (на примере субъектов Российской Федерации, входящих в Южный Федеральный Округ) // Право интеллектуальной собственности, 2017 - №4.</h3>
+							<h3>6. Structural Differences of Economies of Different Developmental Types: Assessments and Effective Ranking on a Global Basis // International Journal of Applied Engineering Research, 2017. – Vol.12, No 22. – pp. 12554-12563.</h3>
+							<a href="publications/6.pdf" target="_blank">Скачать</a>
+						</div>
+
+						<!-- program divider -->
+						<div class="program-divider col-md-12 col-sm-12"></div>
+
+						<!-- program speaker here -->
+						<div class="col-md-2 col-sm-2">
+							<img src="images/publication_7.png" class="img-responsive" alt="program">
+						</div>
+						<div class="col-md-10 col-sm-10">
+							<h3>7. Особенности структурного и рангового анализа результатов устойчивого развития субъектов РФ // Социум и власть, 2017. – № 4(60). – С.</h3>
+							<a href="publications/7.pdf" target="_blank">Скачать</a>
+						</div>
+
+						<!-- program divider -->
+						<div class="program-divider col-md-12 col-sm-12"></div>
+
+						<!-- program speaker here -->
+						<div class="col-md-2 col-sm-2">
+							<img src="images/publication_8.jpg" class="img-responsive" alt="program">
+						</div>
+						<div class="col-md-10 col-sm-10">
+							<h3>8. Structural analysis and criteria for assessment of state economic policy // International Journal of Applied Engineering Research, 2017. – Vol.12, No 17. – pp. 6603-6614.</h3>
+							<a href="publications/8.pdf" target="_blank">Скачать</a>
 						</div>
 					</div>
 				</div>
@@ -528,10 +598,8 @@ $(function(){
 					<p>Адрес: 400131, г. Волгоград, ул. Гагарина, д. 8 </p>
 					<p>Телефон: +7 8442 – 24-17-32 </p> 
 					<p>Факс: +7 8442 – 24-17-32</p>
-					<p>E-mail: </p>
+					<p>E-mail: evolutionrating@gmail.com</p>
 					<p>Сайт:</p>
-					<!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat. Lorem ipsum dolor.</p> -->
-					<!-- <a href="#" class="btn btn-danger">DOWNLOAD NOW</a> -->
 				</div>
 			</div>
 
@@ -565,7 +633,7 @@ $(function(){
 		<div class="row">
 
 			<div class="col-md-12 col-sm-12">
-				<p class="wow fadeInUp" data-wow-delay="0.6s">Copyright &copy; 2017 Your Company 
+				<p class="wow fadeInUp" data-wow-delay="0.6s">Copyright &copy; 2017 Evolution  Rating
                     
                     | Design: DAZL dana_zl@mail.ru</a></p>
 
@@ -585,8 +653,6 @@ $(function(){
 
 <!-- Back top -->
 <a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-
 
 
 </body>

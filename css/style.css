@@ -393,7 +393,7 @@ footer {
 #main .col-md-3.co-author {
     display: block;
     width: 100%;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     padding-bottom: 20px;
     margin-bottom: 22px;
 }
