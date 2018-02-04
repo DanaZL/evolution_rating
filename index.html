@@ -59,31 +59,35 @@ selectRegion = '#0A4C82'; // Цвет изначально подсвеченн�
 
 highlighted_states = {};
 
-// var data_obj = {}
-// function processData(allText) {
-//     var allTextLines = allText.split(/\r\n|\n/);
-//     var headers = allTextLines[0].split(',');
+var data_obj = {}
 
-//     for (var i=1; i<allTextLines.length; i++) {
-//         var data = allTextLines[i].split(',');
-//         if (data.length == 3) {
+function processData(allText) {
+	console.log(allText)
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+    console.log(allTextLines.length)
+    for (var i = 1; i < allTextLines.length; i++) {
+        var data = allTextLines[i].split(',');
+        if (data.length == 5) {
+            var id = data[0];
+            var vrp = data[1];
+            var eco = data[2];
+            var inter = data[3];
+            var all = data[4];
+            data_obj[id] = [vrp, eco, inter, all];
+        }
+    }
+    console.log(data_obj)
+}
 
-//             var id = data[0];
-//             var v = parseFloat(data[1]);
-//             var a = parseFloat(data[2]);
-//             predicts[id] = [v, a];
-//         }
-//     }
-// }
-
-// $(document).ready(function() {
-//     $.ajax({
-//         type: "GET",
-//         url: "/rating/rating.csv",
-//         dataType: "text",
-//         success: function(data) {processData(data);}
-//      });
-// });
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8000/rating/rating.csv",
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
+});
 
 // getCsv("/rating/rating.csv")
 
@@ -108,20 +112,97 @@ $(document).ready(function() {
 		// Отображаем объекты если они есть
 		onLabelShow: function(event, label, code){
 			name = '<strong>'+label.text()+'</strong><br>';				
-			if (data_obj[code]){
+			if (data_obj[code]) {
 				list_obj = '<div class="row">';
-				for(ob in data_obj[code]){
-					// console.log(ob)
-					if (ob === '0') {					
-						list_obj += '<p> Традиционный ранг: ' + data_obj[code][ob] + ' из 83</p>';
-					}
-					if (ob === '1') {					
-						list_obj += '<p> Эффективный ранг: ' + data_obj[code][ob] + ' из 1234</p>';
-					}
-					if (ob === '2') {					
-						list_obj += '<p> Величина ВРП / д.н., руб. : ' + data_obj[code][ob] + '  </p>';
+				if (code === 'mc') {
+
+					list_obj += '<strong> Mосква: </strong>';
+					for (ob in data_obj[code]){
+						// console.log(ob)
+						if (ob === '0') {					
+							list_obj += '<p> Эффективный ранг по ВРП на душу населения: ' + data_obj[code][ob].split("-")[0].substring(1) + ' из 1234</p>';
+						}
+						if (ob === '1') {					
+							list_obj += '<p> Эффективный ранг по загрязнению воздуха: ' + data_obj[code][ob].split("-")[0].substring(1) + ' из 753</p>';
+						}
+						if (ob === '2') {					
+							list_obj += '<p> Эффективный ранг по интеллекту : ' + data_obj[code][ob].split("-")[0].substring(1) + '  из 348</p>';
+						}
+						if (ob === '3') {					
+							list_obj += '<p> Сводный рейтинг (сумма рангов) : ' + data_obj[code][ob].split("-")[0].substring(1) + '  из 1874</p>';
+						}
 					}
 
+					list_obj += '<strong> Mосковская область: </strong>';
+					for (ob in data_obj[code]){
+						
+						if (ob === '0') {					
+							list_obj += '<p> Эффективный ранг по ВРП на душу населения: ' + data_obj[code][ob].split("-")[1] + ' из 1234</p>';
+						}
+						if (ob === '1') {					
+							list_obj += '<p> Эффективный ранг по загрязнению воздуха: ' + data_obj[code][ob].split("-")[1] + ' из 753</p>';
+						}
+						if (ob === '2') {					
+							list_obj += '<p> Эффективный ранг по интеллекту : ' + data_obj[code][ob].split("-")[1] + '  из 348</p>';
+						}
+						if (ob === '3') {					
+							list_obj += '<p> Сводный рейтинг (сумма рангов) : ' + data_obj[code][ob].split("-")[1] + '  из 1874</p>';
+						}
+					}
+				} else {
+					if (code === 'le') {
+
+						list_obj += '<strong> Санкт-Петербург: </strong>';
+						for (ob in data_obj[code]){
+							// console.log(ob)
+							if (ob === '0') {					
+								list_obj += '<p> Эффективный ранг по ВРП на душу населения: ' + data_obj[code][ob].split("-")[0].substring(1) + ' из 1234</p>';
+							}
+							if (ob === '1') {					
+								list_obj += '<p> Эффективный ранг по загрязнению воздуха: ' + data_obj[code][ob].split("-")[0].substring(1) + ' из 753</p>';
+							}
+							if (ob === '2') {					
+								list_obj += '<p> Эффективный ранг по интеллекту : ' + data_obj[code][ob].split("-")[0].substring(1) + '  из 348</p>';
+							}
+							if (ob === '3') {					
+								list_obj += '<p> Сводный рейтинг (сумма рангов) : ' + data_obj[code][ob].split("-")[0].substring(1) + '  из 1874</p>';
+							}
+						}
+
+						list_obj += '<strong> Ленинградская область: </strong>';
+						for (ob in data_obj[code]){
+							
+							if (ob === '0') {					
+								list_obj += '<p> Эффективный ранг по ВРП на душу населения: ' + data_obj[code][ob].split("-")[1] + ' из 1234</p>';
+							}
+							if (ob === '1') {					
+								list_obj += '<p> Эффективный ранг по загрязнению воздуха: ' + data_obj[code][ob].split("-")[1] + ' из 753</p>';
+							}
+							if (ob === '2') {					
+								list_obj += '<p> Эффективный ранг по интеллекту : ' + data_obj[code][ob].split("-")[1] + '  из 348</p>';
+							}
+							if (ob === '3') {					
+								list_obj += '<p> Сводный рейтинг (сумма рангов) : ' + data_obj[code][ob].split("-")[1] + '  из 1874</p>';
+							}
+						}
+					} else {
+						for(ob in data_obj[code]) {
+							// console.log(ob)
+							if (ob === '0') {					
+								list_obj += '<p> Эффективный ранг по ВРП на душу населения: ' + data_obj[code][ob] + ' из 1234</p>';
+							}
+							if (ob === '1') {					
+								list_obj += '<p> Эффективный ранг по загрязнению воздуха: ' + data_obj[code][ob] + ' из 753</p>';
+							}
+							if (ob === '2') {					
+								list_obj += '<p> Эффективный ранг по интеллекту : ' + data_obj[code][ob] + '  из 348</p>';
+							}
+							if (ob === '3') {					
+								list_obj += '<p> Сводный рейтинг (сумма рангов) : ' + data_obj[code][ob] + '  из 1874</p>';
+							}
+
+						}
+					} 
 				}
 				list_obj += '</div>';
 			} else {
@@ -202,6 +283,7 @@ $(function(){
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#intro">Начало</a></li>
 				<li><a href="#overview">Интерактивная карта</a></li>
+				<li><a href="#details">Данные по регионам ЮФО</a></li>
 				<li><a href="#main">Главная</a></li>
 				<li><a href="#concept">Концепция</a></li>
 				<li><a href="#program">Публикации</a></li>
@@ -268,6 +350,71 @@ $(function(){
 		</div>
 	</div>
 </section>
+
+<!-- =========================
+    PROGRAM SECTION   
+============================== -->
+<section id="details" class="parallax-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="0.5s">
+				<div class="section-title">
+					<h2>Данные по регионам ЮФО</h2>
+				</div>
+			</div>
+
+			<div class="wow fadeInUp col-md-10 col-sm-10" data-wow-delay="0.5s">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="active"><a href="#fpage" aria-controls="volg" role="tab" data-toggle="tab">Волгоградская область</a></li>
+					<li><a href="#rost" aria-controls="rost" role="tab" data-toggle="tab">Ростовская область</a></li>
+					<li><a href="#krasn" aria-controls="krasn" role="tab" data-toggle="tab">Краснодарский край</a></li>
+					<li><a href="#astrah" aria-controls="astrah" role="tab" data-toggle="tab">Астраханская область</a></li>
+					<li><a href="#kalm" aria-controls="kalm" role="tab" data-toggle="tab">Республика Калмыкия</a></li>
+				</ul>
+
+				<div class="tab-content">
+
+					<div role="tabpanel" class="tab-pane active" id="volg">
+						<div class="col-md-12 col-sm-12">
+							<img src="images/volg.png" class="img-responsive" alt="program">
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="rost">
+						<div class="col-md-12 col-sm-12">
+							<img src="images/rost.png" class="img-responsive" alt="program">
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="krasn">
+						<div class="col-md-12 col-sm-12">
+							<img src="images/krasn.png" class="img-responsive" alt="program">
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="astrah">
+						<div class="col-md-12 col-sm-12">
+							<img src="images/astrah.png" class="img-responsive" alt="program">
+						</div>
+					</div>
+
+					<div role="tabpanel" class="tab-pane" id="kalm">
+						<div class="col-md-12 col-sm-12">
+							<img src="images/kalm.png" class="img-responsive" alt="program">
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
 
 
 <!-- =========================
